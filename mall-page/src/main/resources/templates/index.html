@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>home page</title>
+</head>
+<body>
+<div><a th:href="@{/mall/user/update(uid=${uid})}"><span th:text="${uid} ? ${uid}: ''"></span></a></div>
+<div><a th:href="@{/mall/order/myOrder(uid=${uid})}">我的购物车</a></div>
+<div><a th:href="@{/mall/order/billById(uid=${uid})}">我的订单</a></div>
+<table>
+    <tr>
+        <td>商品编号</td>
+        <td>商品名</td>
+        <td>商品介绍</td>
+        <td>商品类型</td>
+        <td>价格</td>
+        <td>商家</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each=" good : ${goodsItem}">
+        <td th:text="${good.gid}"></td>
+        <td th:text="${good.name}"></td>
+        <td th:text="${good.introduce}"></td>
+        <td th:text="${good.type}"></td>
+        <td th:text="${good.price}"></td>
+        <td th:text="${good.mid}"></td>
+        <td><a th:href="@{/mall/order/add(uid=${uid},gid=${good.gid})}">购买</a></td>
+        <!-- <a th:href="@{/mall/user/delete(uid=${user.uid})}">-->
+    </tr>
+</table>
+<a th:href="@{/mall/user/login}">用户登录</a>
+<a th:href="@{/mall/user/getAll}">用户列表</a>
+</body>
+</html>

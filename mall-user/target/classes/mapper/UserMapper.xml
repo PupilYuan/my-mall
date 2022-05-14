@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springcloud.dao.UserDao">
+
+
+    <resultMap id="UserResultMap" type="entities.UserBean">
+        <id column="uid" property="uid"/>
+        <id column="userName" property="user_name"/>
+        <id column="introduce" property="introduce"/>
+        <id column="email" property="email"/>
+        <id column="password" property="password"/>
+    </resultMap>
+
+    <!-- public int addUser(UserBean userBean); useGeneratedKeys="true" keyProperty="id" -->
+    <insert id="addUser" parameterType="UserBean" useGeneratedKeys="true" keyProperty="userBean.uid">
+        insert into tb_mall_user(user_name,introduce,email,password) values(#{userBean.userName},#{userBean.introduce},#{userBean.email},#{userBean.password});
+    </insert>
+
+    <!--public void deleterById(int uid);-->
+    <delete id="deleterById">
+        delete from tb_mall_user where uid = #{uid};
+    </delete>
+
+    <!--public void updateUser(UserBean userBean);-->
+    <update id="updateUser" parameterType="UserBean">
+        update tb_mall_user set user_name = #{userBean.userName},introduce=#{userBean.introduce},email=#{userBean.email},password=#{userBean.password} where uid=#{userBean.uid}
+    </update>
+
+    <!--public ArrayList<UserBean> selectAll();-->
+    <select id="selectAll" resultMap="UserResultMap">
+        select * from tb_mall_user
+    </select>
+
+    <!--public ArrayList<UserBean> selectById(int uid);-->
+    <select id="selectById" resultMap="UserResultMap">
+        select * from tb_mall_user where uid = #{uid}
+    </select>
+
+    <!--public ArrayList<UserBean> loginExam(@Param("uid") int uid, @Param("password") String password);-->
+    <select id="loginExam" resultMap="UserResultMap" parameterType="UserLogin">
+        select * from tb_mall_user where uid = #{userLogin.uid} and password = #{userLogin.password}
+    </select>
+</mapper>

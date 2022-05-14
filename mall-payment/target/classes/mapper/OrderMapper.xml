@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springcloud.dao.OrderDao">
+
+
+    <resultMap id="OrderResultMap" type="entities.OrderBean">
+        <id column="uid" property="uid"/>
+        <id column="gid" property="gid"/>
+        <id column="number" property="number"/>
+        <id column="time" property="time"/>
+        <id column="price" property="price"/>
+    </resultMap>
+
+    <!--public int add(@Param("orderBean")OrderBean orderBean);-->
+    <insert id="add" parameterType="OrderBean">
+        insert into tb_mall_order values(#{orderBean.uid},#{orderBean.gid},#{orderBean.number},#{orderBean.price})
+    </insert>
+
+    <!--public List<OrderBean> getById(@Param("uid")int uid);-->
+</mapper>

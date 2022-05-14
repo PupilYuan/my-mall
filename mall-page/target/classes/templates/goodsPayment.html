@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/mall/order/addTwo}" method="post">
+    <input type="hidden" name="uid" th:value="${uid}">
+    <input type="hidden" name="gid" th:value="${good.gid}">
+    <label>商品名：</label><input type="text" name="name" th:value="${good.name}"> <br>
+    <label>商品介绍：</label><input type="text" name="introduce"  th:value="${good.introduce}"> <br>
+    <label>商品单价：</label><input type="text" name="price" th:value="${good.price}"> <br>
+    <label>商品数量：</label><input type="number" name="number" th:value="1" max="100" min="1"> <br>
+    <button type="submit">支付</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>商品编号</td>
+        <td>商品数量</td>
+        <td>商品总价</td>
+        <td>支付时间</td>
+    </tr>
+    <tr th:each=" bill : ${bills}">
+        <td th:text="${bill.gid}"></td>
+        <td th:text="${bill.number}"></td>
+        <td th:text="${bill.price}"></td>
+        <td th:text="${bill.time}"></td>
+        <!-- <a th:href="@{/mall/user/delete(uid=${user.uid})}">-->
+    </tr>
+</table>
+<a th:href="@{/mall/home(uid=${uid})}">返回首页</a><br>
+</body>
+</html>

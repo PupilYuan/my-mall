@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/mall/user/loginExam}" method="post">
+    <label>账号：</label><input type="number" name="uid" placeholder="Uid:" required> <br>
+    <label>密码：</label><input type="password" name="password" placeholder="password:" required> <br>
+    <a th:href="@{/mall/user/register}">没有账号？注册</a> <br>
+    <a th:href="@{/mall/home}">返回首页</a><br>
+    <button type="submit">登录</button>
+</form>
+</body>
+</html>

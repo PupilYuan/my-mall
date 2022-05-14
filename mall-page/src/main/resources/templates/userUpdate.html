@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/mall/user/updateExam}" method="post">
+        <input type="hidden" name="uid" th:value="${userInfo.uid}">
+        <label>昵称：</label><input type="text" name="userName" th:value="${userInfo.userName}"> <br>
+        <label>介绍：</label><input type="text" name="introduce" th:value="${userInfo.introduce}"> <br>
+        <label>邮箱：</label><input type="email" name="email" th:value="${userInfo.email}"> <br>
+        <label>密码：</label><input type="password" name="password" th:value="${userInfo.password}"> <br>
+        <a th:href="@{/mall/home(uid=${userInfo.uid})}">返回首页</a><br>
+        <button type="submit">修改</button>
+    </form>
+</body>
+</html>

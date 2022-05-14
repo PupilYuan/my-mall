@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springcloud.dao.GoodDao">
+
+
+    <resultMap id="GoodResultMap" type="entities.GoodBean">
+        <id column="gid" property="gid"/>
+        <id column="name" property="name"/>
+        <id column="introduce" property="introduce"/>
+        <id column="type" property="type"/>
+        <id column="price" property="price" />
+        <id column="mid" property="mid"/>
+    </resultMap>
+
+    <!--  public int addGood(GoodBean goodBean); useGeneratedKeys="true" keyProperty="id" -->
+    <insert id="addGood" parameterType="GoodBean">
+        insert into tb_mall_goods_info(name,introduce,type,price,mid) values(#{goodBean.name},#{goodBean.introduce},#{goodBean.type},#{goodBean.price},#{goodBean.mid});
+    </insert>
+
+    <!--public void deleterById(int uid);-->
+    <delete id="deleterById">
+        delete from tb_mall_goods_info where gid = #{gid};
+    </delete>
+
+    <!--public void updateUser(GoodBean goodBean);-->
+    <update id="updateUser" parameterType="GoodBean">
+        update tb_mall_goods_info set name = #{goodBean.name},introduce=#{goodBean.introduce},type=#{goodBean.type},price=#{goodBean.price},mid=#{goodBean.mid}
+    </update>
+
+    <!--public ArrayList<GoodBean> selectAll();-->
+    <select id="selectAll" resultMap="GoodResultMap">
+        select * from tb_mall_goods_info
+    </select>
+
+    <!--public ArrayList<GoodBean> selectById(int gid);-->
+    <select id="selectById" resultMap="GoodResultMap">
+        select * from tb_mall_goods_info where gid = #{gid}
+    </select>
+</mapper>

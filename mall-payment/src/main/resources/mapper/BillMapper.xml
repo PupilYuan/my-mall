@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springcloud.dao.BillDao">
+
+
+    <resultMap id="BillResultMap" type="entities.BillBean">
+        <id column="uid" property="uid"/>
+        <id column="gid" property="gid"/>
+        <id column="number" property="number"/>
+        <id column="time" property="time"/>
+        <id column="price" property="price"/>
+    </resultMap>
+
+    <!--public int add(@Param("billBean") BillBean billBean);-->
+    <insert id="add" parameterType="BillBean">
+        insert into tb_mall_shopping_cart_item values(#{billBean.uid},#{billBean.gid},#{billBean.number},#{billBean.time},#{billBean.price})
+    </insert>
+
+    <!--public List<OrderBean> getById(@Param("uid")int uid);-->
+    <select id="getById" resultMap="BillResultMap">
+        select * from tb_mall_shopping_cart_item where uid = #{uid}
+    </select>
+</mapper>
